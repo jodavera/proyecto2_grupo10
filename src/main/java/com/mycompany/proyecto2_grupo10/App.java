@@ -17,8 +17,27 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
+       try {
+            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("login.fxml"));
+            
+            Parent root = fxmlLoader.load();
+            //cree el scene y fije como nodo raiz el objeto que cargo con el fxml
+            scene = new Scene(root);
+        } catch (IOException ex) {
+            //si llegamos a este punto es porque no se pudo cargar del archivo
+            //reporte.fxml el scenegraph
+            //creamos con programacion un nuevo roort y lo fijamos a la scena
+            VBox v = new VBox(new Label("No se cargo el archivo "));
+            ex.getStackTrace();
+            scene = new Scene(v);
+            System.out.println(ex);
+
+        }
+
+        //fije la scena al primary stage
         stage.setScene(scene);
+
+        //muestre la aplicacion
         stage.show();
     }
 
@@ -34,5 +53,5 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
-
+    
 }
