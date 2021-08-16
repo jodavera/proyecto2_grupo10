@@ -35,7 +35,7 @@ public class App extends Application {
             System.out.println(ex);
 
         }
-
+////pruebaaaaa
         //fije la scena al primary stage
         stage.setScene(scene);
 
