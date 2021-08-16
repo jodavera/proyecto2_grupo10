@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 
 /**
  * JavaFX App
