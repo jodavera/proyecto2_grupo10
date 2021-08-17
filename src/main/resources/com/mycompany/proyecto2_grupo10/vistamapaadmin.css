@@ -1,0 +1,8 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+#mapaCasas{
+    -fx-background-image: url('Captura.png');
+    -fx-background-size: 100% 100%;
+}
