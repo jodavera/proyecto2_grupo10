@@ -8,8 +8,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import static javafx.application.Application.launch;
-import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
 
 /**
  * JavaFX App
