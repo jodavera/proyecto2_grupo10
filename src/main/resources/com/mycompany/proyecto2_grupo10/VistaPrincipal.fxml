@@ -26,7 +26,7 @@
                   <Image url="@urbanizacion.jpg" />
                </image>
             </ImageView>
-            <Button mnemonicParsing="false" onMouseClicked="#iniciarSesion" prefHeight="26.0" prefWidth="224.0" text="Iniciar Sesión" />
+            <Button fx:id="btinicio" mnemonicParsing="false" onMouseClicked="#iniciarSesion" prefHeight="26.0" prefWidth="224.0" text="Iniciar Sesión" />
             <Button mnemonicParsing="false" onMouseClicked="#simular" prefHeight="26.0" prefWidth="222.0" text="Simulación" />
          </children>
       </VBox>

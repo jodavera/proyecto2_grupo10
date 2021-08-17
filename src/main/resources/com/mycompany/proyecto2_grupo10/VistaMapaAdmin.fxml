@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -27,6 +28,7 @@
       </HBox>
       <FlowPane alignment="BASELINE_CENTER" columnHalignment="CENTER" prefHeight="558.0" prefWidth="604.0">
          <children>
+            <Label text="ADMIIIIIIN" />
             <Pane id="mapaCasas" fx:id="panelMapa" prefHeight="362.0" prefWidth="584.0" stylesheets="@vistamapaadmin.css" visible="false" />
             <Pane disable="true" prefHeight="227.0" prefWidth="302.0" visible="false" />
          </children>

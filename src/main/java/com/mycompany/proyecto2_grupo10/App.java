@@ -12,17 +12,20 @@ import java.io.IOException;
  * JavaFX App
  */
 public class App extends Application {
-
+    static BaseDatos bd;
     private static Scene scene;
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("VistaPrincipal"), 700, 700);
+        bd= new BaseDatos();
+      scene = new Scene(loadFXML("VistaPrincipal"), 700, 700);
         stage.setScene(scene);
         stage.setTitle("Urbanización");
         stage.show();
     }
-
+    static void setRoot(Parent root) {
+        scene.setRoot(root);
+    }
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
@@ -35,5 +38,7 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
+
+    
 
 }

@@ -5,10 +5,12 @@
  */
 package com.mycompany.proyecto2_grupo10;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -27,11 +29,13 @@ public class VistaPrincipalController implements Initializable {
     }    
 
     @FXML
-    private void iniciarSesion(MouseEvent event) {
+    private void iniciarSesion(MouseEvent event) throws IOException {
+     App.setRoot("login");
     }
 
     @FXML
-    private void simular(MouseEvent event) {
+    private void simular(MouseEvent event) throws IOException {
+        
     }
     
 }

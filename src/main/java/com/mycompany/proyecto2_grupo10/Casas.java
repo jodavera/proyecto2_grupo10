@@ -5,10 +5,18 @@
  */
 package com.mycompany.proyecto2_grupo10;
 
+import com.mycompany.proyecto2_grupo10.Visitantes;
+import java.util.ArrayList;
+
 /**
  *
- * @author ANDREA
+ * @author user
  */
-public class NewClass {
+class Casas {
+    private ArrayList<Visitantes> visitas;
+
+    public Casas(ArrayList<Visitantes> visitas) {
+        this.visitas = visitas;
+    }
     
 }
