@@ -39,6 +39,7 @@ public class VistaMapaAdminController implements Initializable {
     
     @FXML
     private void mostrarMapa(ActionEvent event) {
+        panelMapa.setVisible(true);
     }
 
 }
