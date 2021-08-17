@@ -51,19 +51,50 @@ public class LoginController implements Initializable {
 
     @FXML
     private void mostrarEleccion(MouseEvent event) throws IOException {
+        
+       
        String usu = txtusuario.getText();
        usu=usu.replaceAll(" ","");
        String password= txtclaves.getText();
        password=password.replaceAll(" ","");
         
+       try{
+            
+            if ((password.length()) == 0 &&(usu.length() == 0)) {
+                throw new NullPointerException("no puede dejar campos vacios");
+                
+            }else{
+                if (password.length() == 0) {
+                    throw new NullPointerException("Contraseña no puede er vacio");
+                }
+                else{
+                if (usu.length() == 0) {
+                    throw new NullPointerException("Usuario no puede ir vacio");
+                }
+            }}}catch(NullPointerException e){
+                FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("login.fxml"));
+            
+                Parent root = fxmlLoader.load();
+           //cree el scene y fije como nodo raiz el objeto que cargo con el fxml
+           Scene scene = new Scene(root);
+                VBox v = new VBox(new Label(e.getMessage()));
+                e.getStackTrace();
+                scene = new Scene(v);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+
+                 //muestre la aplicacion
+                stage.show();
+            }
        /// Validacion
        Usuario u= new Usuario(usu,password);
         System.out.println(usu);
         System.out.println(password);
         System.out.println(u.toString());
        Usuario c=u.buscarUsuario(App.bd.getUsuarios(),u);
+       
+       
        if(c== null){
-            System.out.println("aja");
            VBox error= new VBox(new Label("Credencial Incorrecta"));
            sc= new Scene(error);
            Stage escenario= new Stage();
