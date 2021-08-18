@@ -5,10 +5,10 @@
  */
 package Datos;
 
-import com.mycompany.proyecto2_grupo10.Administrador;
+import com.mycompany.proyecto2_grupo10.modelos.Administrador;
 import com.mycompany.proyecto2_grupo10.App;
-import com.mycompany.proyecto2_grupo10.Residente;
-import com.mycompany.proyecto2_grupo10.Usuario;
+import com.mycompany.proyecto2_grupo10.modelos.Residente;
+import com.mycompany.proyecto2_grupo10.modelos.Usuario;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;

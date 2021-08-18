@@ -1,5 +1,6 @@
 package com.mycompany.proyecto2_grupo10;
 
+import com.mycompany.proyecto2_grupo10.modelos.BaseDatos;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
