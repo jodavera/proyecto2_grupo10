@@ -2,3 +2,5 @@ N/A,jodavera,N/A,Spiderman2400,verasuarez16@gmail.com,admin
 N/A,admin,N/A,admin,adrian2x2001@gmail.com,admin
 N/A,minchan,N/A,espol123,correaodelamiss@gmail.com,admin
 157,paloma123,eren,titanloco,verasuarez2400@hotmail.com,residente
+1111,us1,usuario1,titanloco,verasuarez2400@hotmail.com,residente
+2222,us2,usuario2,titanloco,verasuarez2400@hotmail.com,residente

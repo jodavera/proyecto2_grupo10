@@ -57,6 +57,7 @@ public class VistaMapaAdminController implements Initializable {
     
     @FXML
     private void mostrarMapa(ActionEvent event) {
+        panelAdmin.setVisible(true);
         List<Casas> casas = Casas.cargarCasas();
        for (Casas c : casas){
            StackPane st = new StackPane();
@@ -70,7 +71,7 @@ public class VistaMapaAdminController implements Initializable {
                 System.out.println("No encontrada: "+c.getTipo());
                 imgview = new ImageView();
                 }
-           Label l = new Label(c.getNombre());
+           Label l = new Label(c.getCodigo());
            st.getChildren().addAll(imgview,l);
            
            //agregamos el st al mapa
@@ -81,10 +82,12 @@ public class VistaMapaAdminController implements Initializable {
            
            EventHandler eh = (event1) -> {
                vResidente.getChildren().clear();
-               Label l1 = new Label("Residente: "+c.getResidente().getNombre());
+               Label l1 = new Label("Nombre Residente: "+c.getResidente().getNombre());
+               Label l4 = new Label ("Usuario Residente: "+c.getResidente().getUsuario());
                Label l2= new Label("Villa: "+c.getVilla());
                Label l3 = new Label("Manzana: "+ c.getManzana());
-               vResidente.getChildren().addAll(l1,l2,l3);
+               
+               vResidente.getChildren().addAll(l1,l4,l2,l3);
            };
            EventHandler eh2 = (event2) -> {
                vResidente.getChildren().clear();

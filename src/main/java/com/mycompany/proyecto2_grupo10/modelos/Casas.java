@@ -5,6 +5,7 @@
  */
 package com.mycompany.proyecto2_grupo10.modelos;
 
+import Datos.DatosUsuarios;
 import com.mycompany.proyecto2_grupo10.App;
 import com.mycompany.proyecto2_grupo10.modelos.Visitantes;
 import java.io.BufferedReader;
@@ -24,7 +25,11 @@ public class Casas {
     private Residente residente;
     private Ubicacion ubicacion;
     private String tipo;
-    private String nombre;
+    private String codigo;
+    
+    public Casas(){
+        
+    }
     
     public Casas(String v, String m, Residente r,String t, Ubicacion u,String n){
         villa=v;
@@ -32,7 +37,7 @@ public class Casas {
         residente=r;
         ubicacion=u;
         tipo=t;
-        nombre=n;
+        codigo=n;
         
     }
     
@@ -51,8 +56,8 @@ public class Casas {
     public String getTipo(){
         return tipo;
     }
-    public String getNombre(){
-        return nombre;
+    public String getCodigo(){
+        return codigo;
     }
     
     public static List<Casas> cargarCasas() {
@@ -68,8 +73,18 @@ public class Casas {
                 String[] p = linea.split(",");
                 String[] u = p[4].split(":");
                 Ubicacion ubicacion = new Ubicacion(Double.valueOf(u[0]),Double.valueOf(u[1]));
-                Residente residente = new Residente("1111","correo","correo","correo",null);
+                Residente residente = new Residente();
+                ArrayList<Usuario> usuarios = DatosUsuarios.leerUsuarios();
                 Casas c = new Casas(p[0],p[1],residente,p[3],ubicacion,p[2]);
+                for (Usuario us : usuarios){
+                    if(us.getUsuario().equals(p[5])){
+                        if(us instanceof Residente){
+                        Residente r = (Residente) us;
+                        c = new Casas(p[0],p[1],r,p[3],ubicacion,p[2]);
+                        r.setCasa(c);}
+                        }
+                    }  
+                
                 casas.add(c);
             }         
         }  catch (IOException ex) {

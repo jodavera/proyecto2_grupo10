@@ -16,6 +16,7 @@ public class Residente extends Usuario{
     private String correo;
     private ArrayList<Vehiculos> vehiculo;
     private String nombre ;
+    private Casas casa;
     
     public Residente(){
         super();
@@ -47,7 +48,10 @@ public class Residente extends Usuario{
     public String getNombre(){
         return nombre;
     }
-
+    
+    public void setCasa(Casas c){
+        casa=c;
+    }
 
     public ArrayList<Vehiculos> getVehiculo() {
         return vehiculo;
