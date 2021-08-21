@@ -13,7 +13,7 @@
    <children>
       <VBox alignment="CENTER" prefHeight="700.0" prefWidth="485.0" spacing="30.0">
          <children>
-            <Label text="Bienvenido a la Urbanización Nuevo Mundo">
+            <Label text="Bienvenido a la Urbanización Nuevo Mundo" underline="true">
                <VBox.margin>
                   <Insets />
                </VBox.margin>

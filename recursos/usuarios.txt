@@ -1,0 +1,6 @@
+N/A,jodavera,N/A,Spiderman2400,verasuarez16@gmail.com,admin,masculino
+N/A,admin,N/A,admin,adrian2x2001@gmail.com,admin,masculino
+N/A,minchan,N/A,espol123,correaodelamiss@gmail.com,admin,femenino
+157,paloma123,eren,titanloco,verasuarez2400@hotmail.com,residente,masculino
+1111,us1,usuario1,titanloco,verasuarez2400@hotmail.com,residente,femenino
+2222,us2,usuario2,titanloco,verasuarez2400@hotmail.com,residente,femenino

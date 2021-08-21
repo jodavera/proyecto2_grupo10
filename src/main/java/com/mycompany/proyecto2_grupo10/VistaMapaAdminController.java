@@ -5,18 +5,22 @@
  */
 package com.mycompany.proyecto2_grupo10;
 
+import Datos.DatosCasas;
 import com.mycompany.proyecto2_grupo10.modelos.Casas;
 
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 
 import javafx.scene.control.MenuItem;
@@ -25,8 +29,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
+
 /**
  * FXML Controller class
  *
@@ -58,7 +61,7 @@ public class VistaMapaAdminController implements Initializable {
     @FXML
     private void mostrarMapa(ActionEvent event) {
         panelAdmin.setVisible(true);
-        List<Casas> casas = Casas.cargarCasas();
+        ArrayList<Casas> casas = DatosCasas.cargarCasas();
        for (Casas c : casas){
            StackPane st = new StackPane();
            ImageView imgview = null;
@@ -92,9 +95,31 @@ public class VistaMapaAdminController implements Initializable {
            EventHandler eh2 = (event2) -> {
                vResidente.getChildren().clear();
            };
+           EventHandler eh3 = (event3) -> {
+               System.out.println(c.getResidente());
+               if (c.getResidente().getUsuario()==null){
+               
+               try{
+            //1. create an FXMLLoader object and store in it the result of the statement
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("VistaRegistroResidente.fxml"));
+            
+            //2. cargar la vista
+            Parent vistaRegistro = loader.load();
+            
+            //3. fijar el contenido en la scena
+            App.setRoot(vistaRegistro);
+           
+            
+        }catch(IOException ex){
+            System.out.println("No se ha podido cargar la vista");
+            System.out.println("VistaAgradecimiento.fxml");
+                }
+            }
+        };
            
            st.setOnMouseEntered(eh);
            st.setOnMouseExited(eh2);
+           st.setOnMouseClicked(eh3);
            }
         }
 }

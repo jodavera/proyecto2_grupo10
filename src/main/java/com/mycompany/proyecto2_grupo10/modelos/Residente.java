@@ -17,6 +17,7 @@ public class Residente extends Usuario{
     private ArrayList<Vehiculos> vehiculo;
     private String nombre ;
     private Casas casa;
+    private String genero;
     
     public Residente(){
         super();
@@ -32,6 +33,13 @@ public class Residente extends Usuario{
         super(usuario, clave);
         this.pin = pin;
         this.nombre = nombre;
+    }
+    
+    public Residente(String pin, String nombre, String usuario, String clave,String genero) {
+        super(usuario, clave);
+        this.pin = pin;
+        this.nombre = nombre;
+        this.genero=genero;
     }
 
 

@@ -5,13 +5,13 @@
  */
 package com.mycompany.proyecto2_grupo10.modelos;
 
+import Datos.DatosCasas;
 import Datos.DatosUsuarios;
 import com.mycompany.proyecto2_grupo10.modelos.Casas;
 import com.mycompany.proyecto2_grupo10.modelos.Usuario;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import com.mycompany.proyecto2_grupo10.modelos.Administrador;
 
 
 /**
@@ -21,6 +21,7 @@ import com.mycompany.proyecto2_grupo10.modelos.Administrador;
 public class BaseDatos {
     private ArrayList<Casas> casa;
     private ArrayList<Usuario> usuarios;
+    
     public ArrayList<Casas> getCasa() {
         return casa;
     }
@@ -29,7 +30,13 @@ public class BaseDatos {
         return usuarios;
     }
     public BaseDatos () throws IOException{
+        try{
         usuarios = DatosUsuarios.leerUsuarios();
+        casa = DatosCasas.cargarCasas();} catch( IOException ex){
+            System.out.println("error");
+            System.out.println(ex.getMessage());
+            
+        }
     }
     
 }

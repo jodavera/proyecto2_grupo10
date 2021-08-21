@@ -22,23 +22,21 @@ import java.util.ArrayList;
  * @author user
  */
 public class DatosUsuarios {
-    static String ruta = "usuarios.txt";
+    static String ruta = RutaConstante.RUTAARCHIVOS+"/usuarios.txt";
     public static ArrayList<Usuario> leerUsuarios() throws IOException {
         ArrayList<Usuario> usu = new ArrayList<>();
-        try {
-            
-            URL u = App.class.getResource(ruta);
-            File file = new File(u.toURI());
-            try ( BufferedReader bf = new BufferedReader(new FileReader(file))) {
+            try ( BufferedReader bf = new BufferedReader(new FileReader(ruta))) {
                 String linea;
                 while ((linea = bf.readLine()) != null) {
+                    System.out.println(linea);
                     String[] partes = linea.split(",");
-                    if (partes.length == 6) {
+                    if (partes.length == 7) {
                         if (partes[5].equals("admin")) {
                             usu.add(new Administrador(partes[1], partes[3]));
                         } else {
                             if (partes[5].equals("residente")) {
-                                usu.add(new Residente(partes[0],partes[2], partes[1], partes[3]));
+                                usu.add(new Residente(partes[0],partes[2], partes[1], partes[3],partes[6]));
+                                System.out.println(usu);
                             }
                         }
                     }
@@ -50,10 +48,7 @@ public class DatosUsuarios {
                 System.out.println(ex.getMessage());
                 throw ex;
             }
-
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
+        System.out.println(usu);
         return usu;
     }
 }

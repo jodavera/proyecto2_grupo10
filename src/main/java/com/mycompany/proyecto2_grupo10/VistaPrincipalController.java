@@ -11,6 +11,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -19,6 +20,9 @@ import javafx.scene.input.MouseEvent;
  * @author Ricardo Siavichay
  */
 public class VistaPrincipalController implements Initializable {
+
+    @FXML
+    private Button btinicio;
 
     /**
      * Initializes the controller class.
