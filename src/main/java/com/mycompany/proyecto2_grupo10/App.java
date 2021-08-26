@@ -13,7 +13,7 @@ import java.io.IOException;
  * JavaFX App
  */
 public class App extends Application {
-    static BaseDatos bd;
+    public static BaseDatos bd;
     private static Scene scene;
 
     @Override

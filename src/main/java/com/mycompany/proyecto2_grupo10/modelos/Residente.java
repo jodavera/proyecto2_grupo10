@@ -29,13 +29,13 @@ public class Residente extends Usuario{
         this.vehiculo = vehiculo;
     }
 
-    public Residente(String pin, String nombre, String usuario, String clave) {
+    public Residente(String pin, String usuario, String nombre, String clave) {
         super(usuario, clave);
         this.pin = pin;
         this.nombre = nombre;
     }
     
-    public Residente(String pin, String nombre, String usuario, String clave,String genero) {
+    public Residente(String pin, String usuario, String nombre, String clave,String genero) {
         super(usuario, clave);
         this.pin = pin;
         this.nombre = nombre;

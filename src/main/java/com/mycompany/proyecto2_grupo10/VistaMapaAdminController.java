@@ -102,10 +102,11 @@ public class VistaMapaAdminController implements Initializable {
                try{
             //1. create an FXMLLoader object and store in it the result of the statement
             FXMLLoader loader = new FXMLLoader(App.class.getResource("VistaRegistroResidente.fxml"));
-            
+
             //2. cargar la vista
             Parent vistaRegistro = loader.load();
-            
+            VistaRegistroResidenteController cs = loader.<VistaRegistroResidenteController>getController();
+            cs.setCasaSeleccionada(c);
             //3. fijar el contenido en la scena
             App.setRoot(vistaRegistro);
            
@@ -123,4 +124,3 @@ public class VistaMapaAdminController implements Initializable {
            }
         }
 }
-

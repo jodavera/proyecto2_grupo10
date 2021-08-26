@@ -11,7 +11,10 @@ import com.mycompany.proyecto2_grupo10.modelos.Residente;
 import com.mycompany.proyecto2_grupo10.modelos.Ubicacion;
 import com.mycompany.proyecto2_grupo10.modelos.Usuario;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -27,6 +30,7 @@ import java.util.ArrayList;
 
 public class DatosCasas {
     static String ruta = RutaConstante.RUTAARCHIVOS+"/Casas.txt";
+    
     public static ArrayList<Casas> cargarCasas() {
         ArrayList<Casas> casas = new ArrayList<>();
         try(BufferedReader bf = new BufferedReader(new FileReader(ruta))){
@@ -55,5 +59,25 @@ public class DatosCasas {
             ex.printStackTrace();
         }
         return casas;
+    }
+    
+    public static void agregarResidenteCasa(ArrayList<Casas> casas) throws IOException{
+
+        try ( BufferedWriter bf = new BufferedWriter(new FileWriter(ruta,false))) {
+                    for (Casas c:casas){
+                        String linea=c.getVilla()+","+c.getManzana()+","+c.getCodigo()+","+c.getTipo()+","+c.getUbicacion().getX()+":"+c.getUbicacion().getY()+","+c.getResidente().getUsuario();
+                        bf.write(linea);
+                        bf.newLine();}
+                        bf.close();
+                        System.out.println("residente agregado a la casa con exito");
+            } catch (FileNotFoundException ex) {
+                System.out.println(ex.getMessage());
+                System.out.println("Archivo no encontrado");
+                throw ex;
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+                System.out.println("Error aqui"); 
+                throw ex;
+            }
     }
 }

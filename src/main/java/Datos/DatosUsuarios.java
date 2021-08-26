@@ -10,9 +10,11 @@ import com.mycompany.proyecto2_grupo10.App;
 import com.mycompany.proyecto2_grupo10.modelos.Residente;
 import com.mycompany.proyecto2_grupo10.modelos.Usuario;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -30,17 +32,13 @@ public class DatosUsuarios {
                 while ((linea = bf.readLine()) != null) {
                     System.out.println(linea);
                     String[] partes = linea.split(",");
-                    if (partes.length == 7) {
-                        if (partes[5].equals("admin")) {
-                            usu.add(new Administrador(partes[1], partes[3]));
+                    if (partes.length == 5) {
+                            usu.add(new Administrador(partes[0], partes[1]));
                         } else {
-                            if (partes[5].equals("residente")) {
-                                usu.add(new Residente(partes[0],partes[2], partes[1], partes[3],partes[6]));
+                                usu.add(new Residente(partes[0],partes[1], partes[2], partes[3],partes[6]));
                                 System.out.println(usu);
-                            }
                         }
                     }
-                }
             } catch (FileNotFoundException ex) {
                 System.out.println(ex.getMessage());
                 throw ex;
@@ -51,4 +49,22 @@ public class DatosUsuarios {
         System.out.println(usu);
         return usu;
     }
+    
+    public static void registrarNuevoUsuario(String linea) throws IOException{
+            try ( BufferedWriter bf = new BufferedWriter(new FileWriter(ruta,true))) {
+                        bf.write(linea);
+                        bf.newLine();
+                        bf.close();
+                        System.out.println("residente registrado con exito");
+            } catch (FileNotFoundException ex) {
+                System.out.println(ex.getMessage());
+                System.out.println("Archivo no encontrado");
+                throw ex;
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+                System.out.println("Error aqui"); 
+                throw ex;
+            }
+    }
+    
 }

@@ -50,4 +50,21 @@ public class Casas {
     public String getCodigo(){
         return codigo;
     }
+    
+    public void setResidente(Residente r){
+        residente=r;
+    }
+    
+     @Override
+    public boolean equals(Object obj) {
+        if (obj != null) {
+            if (obj instanceof Casas) {
+                Casas other = (Casas) obj;
+                if (codigo.equals(other.getCodigo())) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
