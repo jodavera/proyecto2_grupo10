@@ -1,0 +1,4 @@
+1234ABCD,Sanji,us2
+5672ARTE,Luffy,us1
+2908SADF,Adrian,us1
+2933WMNV,Nami,us2

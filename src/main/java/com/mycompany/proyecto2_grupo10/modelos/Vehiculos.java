@@ -9,26 +9,35 @@ package com.mycompany.proyecto2_grupo10.modelos;
  *
  * @author user
  */
-class Vehiculos {
+public class Vehiculos {
     private String matricula;
-    private Residente resident;
+    private String nombrePropietario;
+    private Residente residente;
 
-    public Vehiculos(String matricula, Residente resident) {
-        this.matricula = matricula;
-        this.resident = resident;
+    
+    public Vehiculos(String matricula, String nombrePropietario,Residente residente){
+        this.matricula=matricula;
+        this.nombrePropietario=nombrePropietario;
+        this.residente=residente;
     }
 
     public String getMatricula() {
         return matricula;
     }
-
-    public Residente getResident() {
-        return resident;
+    public Residente getResidente() {
+        return residente;
+    }
+    public String getNombrePropietario(){
+        return nombrePropietario;
+    }
+    
+    public void setResidente(Residente r){
+        residente=r;
     }
 
     @Override
     public String toString() {
-        return "Vehiculos{" + "matricula=" + matricula + ", resident=" + resident + '}';
+        return "matricula: " + matricula + " , propietario: "+nombrePropietario+ ", residente:" +residente ;
     }
     
     

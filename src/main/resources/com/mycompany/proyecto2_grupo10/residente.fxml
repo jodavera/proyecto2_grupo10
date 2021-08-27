@@ -52,14 +52,14 @@
                   </VBox>
                </content>
             </Tab>
-          <Tab text="Mis Vehiculos">
+          <Tab onSelectionChanged="#mostrarVehiculos" text="Mis Vehiculos">
                <content>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <VBox fx:id="vConstanteVehiculos" alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" />
-                              <VBox fx:id="vVariableVehiculos" alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" />
+                              <VBox fx:id="vConstanteVehiculos" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="261.0" />
+                              <VBox fx:id="vVariableVehiculos" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="197.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">

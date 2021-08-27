@@ -7,6 +7,7 @@ package com.mycompany.proyecto2_grupo10;
 
 import com.mycompany.proyecto2_grupo10.modelos.Casas;
 import com.mycompany.proyecto2_grupo10.modelos.Residente;
+import com.mycompany.proyecto2_grupo10.modelos.Vehiculos;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -87,7 +88,10 @@ public class ResidenteController implements Initializable {
     }
 
     @FXML
-    private void RegistratNuevoVehiculo(ActionEvent event) {
+    private void RegistratNuevoVehiculo(ActionEvent event) throws IOException {
+        FXMLLoader loader =  new FXMLLoader(App.class.getResource("registrarVehiculo.fxml"));
+        Parent vistaResidente = loader.load();
+        App.setRoot(vistaResidente);
         
     }
 
@@ -115,6 +119,28 @@ public class ResidenteController implements Initializable {
         }catch(IOException ex){
             System.out.println("No se ha podido cargar la vista");
                 }
+    }
+
+    @FXML
+    private void mostrarVehiculos(Event event) {
+        vConstanteVehiculos.getChildren().clear();
+        vVariableVehiculos.getChildren().clear();
+        int cantidad=0;
+        for (Vehiculos v: App.bd.getVehiculos()){
+            if(v.getResidente().getUsuario().equals(residente.getUsuario())){
+                cantidad+=1;
+                Label lb1 = new Label();
+                Label lb2 = new Label();
+                Label lb3 = new Label();
+                Label lb4 = new Label();
+                lb1.setText("Vehiculo"+cantidad+" matricula: ");
+                lb2.setText(v.getMatricula());
+                lb3.setText("Vehiculo"+cantidad+" propietario: ");
+                lb4.setText(v.getNombrePropietario());
+                vConstanteVehiculos.getChildren().addAll(lb1,lb3);
+                vVariableVehiculos.getChildren().addAll(lb2,lb4);
+            }
+        }
     }
 
 }

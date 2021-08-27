@@ -26,10 +26,10 @@
                <children>
                   <Label text="PIN actual" />
                   <Label text="PIN nuevo" GridPane.rowIndex="1" />
-                  <TextField fx:id="pinNuevo" onKeyTyped="#largoPinN" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField fx:id="pinActual" onKeyTyped="#largoPinA" GridPane.columnIndex="1" />
+                  <TextField fx:id="pinNuevo" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="pinActual" GridPane.columnIndex="1" />
                   <Label text="Confirmar nuevo PIN" GridPane.rowIndex="2" />
-                  <TextField fx:id="pinConfirmar" onKeyTyped="#largoPinC" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="pinConfirmar" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
             <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">

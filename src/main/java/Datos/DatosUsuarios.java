@@ -5,20 +5,15 @@
  */
 package Datos;
 
-import static Datos.DatosCasas.ruta;
 import com.mycompany.proyecto2_grupo10.modelos.Administrador;
-import com.mycompany.proyecto2_grupo10.App;
-import com.mycompany.proyecto2_grupo10.modelos.Casas;
 import com.mycompany.proyecto2_grupo10.modelos.Residente;
 import com.mycompany.proyecto2_grupo10.modelos.Usuario;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 
 /**

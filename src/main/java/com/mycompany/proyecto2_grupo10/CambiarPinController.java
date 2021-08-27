@@ -71,7 +71,6 @@ public class CambiarPinController implements Initializable {
             
         }else{
             if(residente.getPin().equals(pinActual.getText())){
-                System.out.println("Si soy el pin actual");
                 if(pinNuevo.getText().equals(pinConfirmar.getText())){
                     App.bd.actualizarPinUsuarioBD(residente, pinNuevo.getText());
                     DatosUsuarios.actualizarUsuarios(App.bd.getUsuarios());
@@ -104,20 +103,7 @@ public class CambiarPinController implements Initializable {
         Parent vistaResidente = loader.load();
         App.setRoot(vistaResidente);
     }
-
-    @FXML
-    private void largoPinN(KeyEvent event) {
-    }
-
-    @FXML
-    private void largoPinA(KeyEvent event) {
-    }
-
-    @FXML
-    private void largoPinC(KeyEvent event) {
-    }
     
-
     public static void limitTextField(TextField textField, int limit) {
         UnaryOperator<Change> textLimitFilter = change -> {
             if (change.isContentChange()) {
