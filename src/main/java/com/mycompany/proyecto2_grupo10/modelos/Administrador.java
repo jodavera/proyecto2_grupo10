@@ -12,12 +12,17 @@ import java.util.ArrayList;
  * @author user
  */
 public class Administrador extends Usuario{
-
+    private String nombre;
 
     
 
-    public Administrador(String usuario, String clave) {
+    public Administrador(String usuario, String clave,String nombre) {
         super(usuario, clave);
+        this.nombre=nombre;
+    }
+    
+    public String getNombre(){
+        return nombre;
     }
     
 

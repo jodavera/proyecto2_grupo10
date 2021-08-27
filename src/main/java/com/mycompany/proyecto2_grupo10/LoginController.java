@@ -7,6 +7,7 @@ package com.mycompany.proyecto2_grupo10;
 
 import com.mycompany.proyecto2_grupo10.App;
 import com.mycompany.proyecto2_grupo10.modelos.Administrador;
+import com.mycompany.proyecto2_grupo10.modelos.Casas;
 import com.mycompany.proyecto2_grupo10.modelos.Residente;
 import com.mycompany.proyecto2_grupo10.modelos.Usuario;
 import java.io.IOException;
@@ -104,8 +105,20 @@ public class LoginController implements Initializable {
        }
        else{
            if(c instanceof Residente){
-           App.setRoot("residente");
-           //rs= (Residente)u;
+
+                rs = (Residente)c;
+                for(Casas casa: App.bd.getCasa()){
+                    if(casa.getResidente().getUsuario()!=null){
+                        if(casa.getResidente().getUsuario().equals(rs.getUsuario())){
+                            rs.setCasa(casa);
+                        }
+                        
+                    }
+                }
+                FXMLLoader loader =  new FXMLLoader(App.class.getResource("residente.fxml"));
+                Parent vistaResidente = loader.load();
+                App.setRoot(vistaResidente);
+           
            }
            else if(c instanceof Administrador){
            App.setRoot("VistaMapaAdmin");

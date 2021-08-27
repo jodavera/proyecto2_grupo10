@@ -15,11 +15,15 @@ import java.io.IOException;
 public class App extends Application {
     public static BaseDatos bd;
     private static Scene scene;
-
+    
+    public void init ()throws IOException{
+        System.out.println("En el init");
+        System.out.println("Aqui aun no entramos al start");
+        bd=new BaseDatos();
+    }
     @Override
     public void start(Stage stage) throws IOException {
-        bd= new BaseDatos();
-      scene = new Scene(loadFXML("VistaPrincipal"), 900, 750);
+        scene = new Scene(loadFXML("VistaPrincipal"), 900, 750);
         stage.setScene(scene);
         stage.setTitle("Urbanización");
         stage.show();

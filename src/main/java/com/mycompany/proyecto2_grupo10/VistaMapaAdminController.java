@@ -21,11 +21,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -35,7 +37,7 @@ import javafx.scene.layout.VBox;
  *
  * @author Ricardo Siavichay
  */
-public class VistaMapaAdminController implements Initializable {
+public class VistaMapaAdminController implements Initializable{
 
 
     @FXML
@@ -49,6 +51,7 @@ public class VistaMapaAdminController implements Initializable {
     private Pane panelAdmin;
     @FXML
     private VBox vResidente;
+    
     /**
      * Initializes the controller class.
      */
@@ -118,9 +121,46 @@ public class VistaMapaAdminController implements Initializable {
             }
         };
            
+           EventHandler eh4 = (event4) -> {
+               st.startFullDrag();
+               Double x = st.getLayoutX();
+               Double y = st.getLayoutY();
+               c.setUbicacion(x, y);
+               try {
+                   DatosCasas.actualizarCasas(casas);
+                   App.bd.actualizarCasaBD(c, x, y);
+                   
+               } catch (IOException ex) {
+                   ex.printStackTrace();
+               }
+               
+           };
            st.setOnMouseEntered(eh);
            st.setOnMouseExited(eh2);
            st.setOnMouseClicked(eh3);
+           st.setOnMouseDragEntered(eh4);
            }
         }
+    
+    public void mouseDragged(MouseEvent e){
+        
+    }
+
+    @FXML
+    private void cerrarSesion(ActionEvent event) {
+        Alert b = new Alert(Alert.AlertType.INFORMATION);
+         try{
+            b.setTitle("Aviso");
+            b.setContentText("Cierre de sesion satisfactorio");
+            b.showAndWait();
+            //1. creamos el FXML
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("VistaPrincipal.fxml"));
+            //2. cargar la vista
+            Parent vistaMapa = loader.load();
+            //3. fijar el contenido en la scena
+            App.setRoot(vistaMapa);  
+        }catch(IOException ex){
+            System.out.println("No se ha podido cargar la vista");
+                }
+    }
 }

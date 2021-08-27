@@ -41,21 +41,39 @@ public class BaseDatos {
     public Residente agregarResidenteBD(String linea) throws IOException {
         DatosUsuarios.registrarNuevoUsuario(linea);
         String[] datos = linea.split(",");
-        Usuario nuevoResidente = new Residente(datos[0],datos[1], datos[2], datos[3],datos[6]);
+        Usuario nuevoResidente = new Residente(datos[0],datos[1], datos[2], datos[3],datos[4],datos[6]);
         usuarios.add(nuevoResidente);
         Residente r = (Residente) nuevoResidente;
+        r.setCorreo(datos[4]);
         return r;
     }
     
-    public void actualizarCasa(Casas casasActualizar,Usuario u){
+    public void actualizarPinUsuarioBD(Usuario u, String PIN){
+        usuarios.remove(u);
+        if (u instanceof Residente){
+            Residente r = (Residente)u;
+            r.setPin(PIN);
+            usuarios.add(r);
+        }
+        
+    }
+    
+
+    public void actualizarCasaBD(Casas casasActualizar,Usuario u){
         casa.remove(casasActualizar);
         System.out.println(casa);
         if (u instanceof Residente){
             Residente r = (Residente)u;
             casasActualizar.setResidente(r);
         }
-        casa.add(casasActualizar);
-        
+        casa.add(casasActualizar); 
     }
+    
+    public void actualizarCasaBD(Casas casasActualizar,Double x,Double y){
+        casa.remove(casasActualizar);
+        casasActualizar.setUbicacion(x,y);
+        casa.add(casasActualizar); 
+    }
+
     
 }

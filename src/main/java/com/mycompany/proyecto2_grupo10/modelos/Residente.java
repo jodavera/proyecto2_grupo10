@@ -35,11 +35,12 @@ public class Residente extends Usuario{
         this.nombre = nombre;
     }
     
-    public Residente(String pin, String usuario, String nombre, String clave,String genero) {
+    public Residente(String pin, String usuario, String nombre, String clave,String correo,String genero) {
         super(usuario, clave);
         this.pin = pin;
         this.nombre = nombre;
         this.genero=genero;
+        this.correo=correo;
     }
 
 
@@ -56,9 +57,21 @@ public class Residente extends Usuario{
     public String getNombre(){
         return nombre;
     }
+    public Casas getCasa(){
+        return casa;
+    }
+    public String getGenero(){
+        return genero;
+    }
     
     public void setCasa(Casas c){
         casa=c;
+    }
+    public void setCorreo(String c){
+        correo=c;
+    }
+    public void setPin(String p){
+        pin=p;
     }
 
     public ArrayList<Vehiculos> getVehiculo() {
@@ -71,6 +84,5 @@ public class Residente extends Usuario{
     public String toString() {
         return "pin=" + pin + ", correo=" + correo +", vehiculo=" + vehiculo;
     }
-    
     
 }

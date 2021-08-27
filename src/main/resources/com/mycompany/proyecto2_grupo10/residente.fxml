@@ -1,11 +1,141 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyecto2_grupo10.ResidenteController">
    <children>
-      <Label text="RESIDENTEEEEEEEEEEEEEEEE" />
+      <TabPane prefHeight="407.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Mi informacion">
+               <content>
+                  <VBox alignment="CENTER_RIGHT">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Label text="Nombre:" />
+                                    <Label text="Correo:" />
+                                    <Label text="Manzana" />
+                                    <Label text="Villa:" />
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="185.0">
+                                 <children>
+                                    <Label fx:id="nombreResidente" text="Label" />
+                                    <Label fx:id="correoResidente" text="Label" />
+                                    <Label fx:id="manzanaResidente" text="Label" />
+                                    <Label fx:id="villaResidente" text="Label" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#CambiarPin" prefHeight="38.0" prefWidth="102.0" text="Cambiar Pin" />
+                           </children>
+                           <VBox.margin>
+                              <Insets right="200.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content>
+            </Tab>
+          <Tab text="Mis Vehiculos">
+               <content>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <VBox fx:id="vConstanteVehiculos" alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" />
+                              <VBox fx:id="vVariableVehiculos" alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#RegistratNuevoVehiculo" prefHeight="42.0" prefWidth="170.0" text="Registrar Nuevo Vehiculo" />
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <VBox.margin>
+                              <Insets right="200.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content>
+            </Tab>
+            <Tab text="Mis Visitas">
+               <content>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#registrarVisita" prefHeight="36.0" prefWidth="122.0" text="Registrar Visita" />
+                           </children>
+                           <VBox.margin>
+                              <Insets left="50.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="246.0" spacing="5.0">
+                                 <children>
+                                    <Label text="Fecha Inicio" />
+                                    <TextField fx:id="fechaInicio" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="243.0" spacing="5.0">
+                                 <children>
+                                    <Label prefHeight="18.0" prefWidth="58.0" text="Fecha Fin" />
+                                    <TextField fx:id="fechaFin" prefHeight="26.0" prefWidth="166.0" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="121.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#buscarVisitas" text="Buscar" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <TableView prefHeight="100.0" prefWidth="901.0">
+                                <columns>
+                                  <TableColumn fx:id="nombreVisitas" prefWidth="185.60000002384186" text="Nombre Visita" />
+                                  <TableColumn fx:id="cedulaVIsitas" prefWidth="192.0" text="Cedula VIsita" />
+                                    <TableColumn fx:id="codigoVisitas" prefWidth="127.20001220703125" text="Codigo Acceso" />
+                                    <TableColumn fx:id="fechaVisita" minWidth="7.20001220703125" prefWidth="160.80007934570312" text="Fecha " />
+                                    <TableColumn fx:id="estadoVIsita" minWidth="0.0" prefWidth="235.2000732421875" text="Estado" />
+                                </columns>
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                 </HBox.margin>
+                              </TableView>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content>
+            </Tab>
+            <Tab onSelectionChanged="#salir" text="Salir">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
    </children>
-</AnchorPane>
+</VBox>

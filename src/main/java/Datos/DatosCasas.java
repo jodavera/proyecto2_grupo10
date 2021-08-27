@@ -48,20 +48,18 @@ public class DatosCasas {
                         if(us instanceof Residente){
                         Residente r = (Residente) us;
                         c = new Casas(p[0],p[1],r,p[3],ubicacion,p[2]);
-                        r.setCasa(c);}
                         }
-                    }  
+                    }}  
                 
-                casas.add(c);
-            }         
-        }  catch (IOException ex) {
+                casas.add(c);  
+        }}  catch (IOException ex) {
             System.out.println("no se pudo cargar la informacion de las casas");
             ex.printStackTrace();
         }
         return casas;
     }
     
-    public static void agregarResidenteCasa(ArrayList<Casas> casas) throws IOException{
+    public static void actualizarCasas(ArrayList<Casas> casas) throws IOException{
 
         try ( BufferedWriter bf = new BufferedWriter(new FileWriter(ruta,false))) {
                     for (Casas c:casas){
@@ -69,7 +67,6 @@ public class DatosCasas {
                         bf.write(linea);
                         bf.newLine();}
                         bf.close();
-                        System.out.println("residente agregado a la casa con exito");
             } catch (FileNotFoundException ex) {
                 System.out.println(ex.getMessage());
                 System.out.println("Archivo no encontrado");

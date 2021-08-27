@@ -55,6 +55,11 @@ public class Casas {
         residente=r;
     }
     
+    public void setUbicacion(Double x,Double y){
+        Ubicacion u = new Ubicacion(x,y);
+        ubicacion=u;
+    }
+    
      @Override
     public boolean equals(Object obj) {
         if (obj != null) {

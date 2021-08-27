@@ -5,39 +5,29 @@
  */
 package com.mycompany.proyecto2_grupo10;
 
+import Correo.Correo;
 import Datos.DatosCasas;
-import Datos.DatosUsuarios;
 import Datos.RutaConstante;
 import com.mycompany.proyecto2_grupo10.modelos.Casas;
 import com.mycompany.proyecto2_grupo10.modelos.Residente;
 import com.mycompany.proyecto2_grupo10.modelos.Usuario;
-import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
+
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
+import javax.mail.MessagingException;
 /**
  * FXML Controller class
  *
@@ -135,10 +125,12 @@ public class VistaRegistroResidenteController implements Initializable {
         Residente nuevoResidente=App.bd.agregarResidenteBD(linea);
         
         //Ubicamos el residente a la casa seleccionada
-        App.bd.actualizarCasa(casaSeleccionada, nuevoResidente);
-        DatosCasas.agregarResidenteCasa(App.bd.getCasa());
+        App.bd.actualizarCasaBD(casaSeleccionada, nuevoResidente);
+        DatosCasas.actualizarCasas(App.bd.getCasa());
         
-        //Mostramos en pantalla la informacion
+        try {
+                Correo.enviarCorreo( nuevoResidente);
+                //Mostramos en pantalla la informacion
         b.setTitle("Informacion de Registro");
         b.setContentText("El residente "+nombreResidente.getText()+ " ah sido agregado satisfactoriamente\n"+"Codigo de casa de registro: "+casaSeleccionada.getCodigo());
         b.show();
@@ -155,14 +147,34 @@ public class VistaRegistroResidenteController implements Initializable {
             
         }catch(IOException ex){
             System.out.println("No se ha podido cargar la vista");
-            System.out.println("VistaAgradecimiento.fxml");
                 }
-                }
+        } catch (MessagingException ex) {
+                a.setTitle("Error");
+                a.setContentText("No se pudo enviar el mensaje, verifique la informacion del correo");
+                a.showAndWait();
+            }
         }
+    }
     }
 
     @FXML
     private void cancelarRegistro(ActionEvent event) {
+        nombreResidente.clear();
+        correoResidente.clear();
+        Alert b = new Alert(Alert.AlertType.INFORMATION);
+        try{
+            b.setTitle("Registro candelado");
+            b.setContentText("Usted ha cancelado el registro de residente en esta casa");
+            b.showAndWait();
+            //1. creamos el FXML
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("VistaMapaAdmin.fxml"));
+            //2. cargar la vista
+            Parent vistaMapa = loader.load();
+            //3. fijar el contenido en la scena
+            App.setRoot(vistaMapa);  
+        }catch(IOException ex){
+            System.out.println("No se ha podido cargar la vista");
+                }
     }
     
     

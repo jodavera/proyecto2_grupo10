@@ -1,8 +1,6 @@
-jodavera,Spiderman2400,verasuarez16@gmail.com,admin,masculino
-admin,admin,adrian2x2001@gmail.com,admin,masculino
-minchan,espol123,correaodelamiss@gmail.com,admin,femenino
+jodavera,Spiderman2400,Josue
+admin,admin,Karla
+minchan,espol123,Michi
 0000,paloma0,eren,pass,verasuarez2400@hotmail.com,residente,masculino
-1111,us1,adrian,pass,verasuarez2400@hotmail.com,residente,femenino
-2222,us2,ricardo,pass,verasuarez2400@hotmail.com,residente,femenino
-2174,ouaqlnsdplvhd,Pedro,kpvpmuciocc,pedro@gmail.com,residente,masculino
-3944,cgutidrqv,Jose Siavichay,hdfuccsro,jose@gmail.com,residente,masculino
+2222,us2,ricardo,pass,verasuarez2400@hotmail.com,residente,masculino
+7777,us1,adrian,pass,verasuarez2400@hotmail.com,residente,masculino
