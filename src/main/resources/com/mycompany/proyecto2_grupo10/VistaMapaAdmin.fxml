@@ -18,7 +18,7 @@
                 <Menu mnemonicParsing="false" text="Admin">
                      <items>
                         <MenuItem fx:id="VerMapa" mnemonicParsing="false" onAction="#mostrarMapa" text="Ver Mapa" />
-                        <MenuItem fx:id="VerReporte" mnemonicParsing="false" text="Ver Reporte" />
+                        <MenuItem fx:id="VerReporte" mnemonicParsing="false" onAction="#mostrarReporte" text="Ver Reporte" />
                         <MenuItem fx:id="Salir" mnemonicParsing="false" onAction="#cerrarSesion" text="Salir" />
                      </items>
                   </Menu>

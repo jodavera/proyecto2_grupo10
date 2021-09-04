@@ -8,6 +8,7 @@ package com.mycompany.proyecto2_grupo10.modelos;
 import Datos.DatosCasas;
 import Datos.DatosUsuarios;
 import Datos.DatosVehiculos;
+import Datos.DatosVisitantes;
 import com.mycompany.proyecto2_grupo10.App;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,12 +23,14 @@ public class BaseDatos {
     private ArrayList<Casas> casa;
     private ArrayList<Usuario> usuarios;
     private ArrayList<Vehiculos> vehiculos;
+    private ArrayList<Visitantes> visitantes;
     
     public BaseDatos () throws IOException{
         try{
         usuarios = DatosUsuarios.leerUsuarios();
         casa = DatosCasas.cargarCasas();
         vehiculos = DatosVehiculos.cargarDatosVehiculos();
+        visitantes= DatosVisitantes.leerVisitantes();
         } catch( IOException ex){
             System.out.println("error");
             System.out.println(ex.getMessage());
@@ -43,6 +46,10 @@ public class BaseDatos {
     }
     public ArrayList<Vehiculos> getVehiculos(){
         return vehiculos;
+    }
+
+    public ArrayList<Visitantes> getVisitantes() {
+        return visitantes;
     }
     
     
@@ -87,4 +94,5 @@ public class BaseDatos {
         DatosVehiculos.agregarNuevoVehiculos(linea);
         vehiculos=DatosVehiculos.cargarDatosVehiculos();
     }
+    
 }

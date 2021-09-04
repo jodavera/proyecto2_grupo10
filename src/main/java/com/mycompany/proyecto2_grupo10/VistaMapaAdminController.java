@@ -6,7 +6,9 @@
 package com.mycompany.proyecto2_grupo10;
 
 import Datos.DatosCasas;
+import Datos.DatosVisitantes;
 import com.mycompany.proyecto2_grupo10.modelos.Casas;
+import com.mycompany.proyecto2_grupo10.modelos.Visitantes;
 
 
 import java.io.IOException;
@@ -21,6 +23,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 
@@ -162,5 +168,23 @@ public class VistaMapaAdminController implements Initializable{
         }catch(IOException ex){
             System.out.println("No se ha podido cargar la vista");
                 }
+    }
+
+    @FXML
+    private void mostrarReporte(ActionEvent event) throws IOException {
+         panelAdmin.setVisible(true);
+         ArrayList<Visitantes> visitas = DatosVisitantes.leerVisitantes();
+         
+        final CategoryAxis xAxis = new CategoryAxis();
+        final NumberAxis yAxis = new NumberAxis();
+        final BarChart<String,Number> grafico = new BarChart<String,Number>(xAxis,yAxis);
+        grafico.setTitle("Cuantas Visitas entran por dia");
+        XYChart.Series series1= new XYChart.Series();
+        series1.setName("Vistas x Dia");
+        for (Visitantes visi: visitas){
+            String nombre=visi.getNombre();
+             series1.getData().add(new XYChart.Data(nombre,visi.getFinicio()));
+        }   
+        grafico.getData().addAll(series1);
     }
 }
