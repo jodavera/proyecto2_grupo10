@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
  *
  * @author user
  */
-public class Visitantes {
+public class Visitantes implements Comparable <Visitantes> {
     private String nombre;
     private String cedula;
     private String codigoAcceso;
@@ -90,5 +90,14 @@ public class Visitantes {
     }
     
     
-    
+    @Override
+    public int compareTo(Visitantes o) {  // es necesario el local date, ya que es innecesario el tiempo en el grafico de vistas vs dia
+        if(o.getFinicio().toLocalDate().isAfter(Finicio.toLocalDate()) ){
+            return -1;
+        }else if(o.getFinicio().toLocalDate().isEqual(Finicio.toLocalDate())){
+            return 0;            
+        }else{
+        return 1;
+        }  
+    }
 }

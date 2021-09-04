@@ -77,6 +77,11 @@
                   </VBox>
                </content>
             </Tab>
+            <Tab onSelectionChanged="#salir" text="Salir">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
             <Tab text="Mis Visitas">
                <content>
                   <VBox prefHeight="200.0" prefWidth="100.0">
@@ -105,7 +110,7 @@
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="121.0">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#buscarVisitas" text="Buscar" />
+                                    <Button mnemonicParsing="false" onAction="#buscarVisitas" onMouseClicked="#mostrarVisitas" text="Buscar" />
                                  </children>
                               </HBox>
                            </children>
@@ -129,11 +134,6 @@
                      </children>
                   </VBox>
                </content>
-            </Tab>
-            <Tab onSelectionChanged="#salir" text="Salir">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-              </content>
             </Tab>
         </tabs>
       </TabPane>

@@ -5,12 +5,16 @@
  */
 package com.mycompany.proyecto2_grupo10;
 
+import static Datos.DatosVisitantes.leerVisitantes;
 import com.mycompany.proyecto2_grupo10.modelos.Casas;
 import com.mycompany.proyecto2_grupo10.modelos.Residente;
 import com.mycompany.proyecto2_grupo10.modelos.Vehiculos;
+import com.mycompany.proyecto2_grupo10.modelos.Visitantes;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.UUID;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -22,6 +26,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 /**
  * FXML Controller class
@@ -142,5 +147,31 @@ public class ResidenteController implements Initializable {
             }
         }
     }
+    public ArrayList<Visitantes> filtrar(ArrayList<Visitantes> visitas){
+    String inicio = fechaInicio.getText();
+    String fin = fechaFin.getText();
+    ArrayList<Visitantes> visititas= new ArrayList<>();
+    for(Visitantes visit : visitas){ 
+        //if(visit.getFinicio().toLocalDate().isBefore( LocalDate.parse(fin)) && visit.getFinicio().toLocalDate().isAfter( LocalDate.parse(inicio))){
+            visititas.add(visit);
+            }
+    
+       // }
+    return visititas;
+    }
 
+    @FXML
+    private void mostrarVisitas(MouseEvent event) throws IOException {
+        ArrayList<Visitantes> visitas = filtrar(leerVisitantes());
+        
+        for(Visitantes v: visitas ){
+            this.nombreVisitas.setText("hola");
+            
+            this.cedulaVIsitas.setText(v.getCedula());
+            this.codigoVisitas.setText(UUID.randomUUID().toString().toUpperCase().substring(0,6));
+            this.fechaInicio.setText(v.getFinicio().toLocalDate().toString());
+            this.estadoVIsita.setText(String.valueOf(v.isEstado()));
+    }
+    }
 }
+
