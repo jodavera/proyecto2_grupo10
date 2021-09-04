@@ -60,6 +60,8 @@ public class VistaMapaAdminController implements Initializable{
     private VBox vResidente;
     @FXML
     private BarChart<?, ?> graficaso;
+    @FXML
+    private Pane panelGrafico;
    
     
     /**
@@ -73,6 +75,9 @@ public class VistaMapaAdminController implements Initializable{
     
     @FXML
     private void mostrarMapa(ActionEvent event) {
+        panelGrafico.setDisable(true);
+        panelGrafico.setVisible(false);
+        panelAdmin.setDisable(false);
         panelAdmin.setVisible(true);
         ArrayList<Casas> casas = DatosCasas.cargarCasas();
        for (Casas c : casas){
@@ -176,7 +181,11 @@ public class VistaMapaAdminController implements Initializable{
 
     @FXML
     private void mostrarReporte(ActionEvent event)  throws IOException {
-        // panelAdmin.setVisible(true);
+        panelGrafico.setVisible(true);
+        panelGrafico.setDisable(false);
+        panelAdmin.setDisable(true);
+        panelAdmin.setVisible(false);
+// panelAdmin.setVisible(true);
          ArrayList<Visitantes> visitas = DatosVisitantes.leerVisitantes();
          Collections.sort(visitas); // nos ordena la nuestros Visitantes por su fechad e Ingreso
 

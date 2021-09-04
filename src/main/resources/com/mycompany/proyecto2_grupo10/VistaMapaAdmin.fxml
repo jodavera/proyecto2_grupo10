@@ -21,17 +21,7 @@
                 <Menu mnemonicParsing="false" text="Admin">
                      <items>
                         <MenuItem fx:id="VerMapa" mnemonicParsing="false" onAction="#mostrarMapa" text="Ver Mapa" />
-                        <MenuItem fx:id="VerReporte" mnemonicParsing="false" onAction="#mostrarReporte" text="Ver Reporte">
-                           <graphic>
-                              <BarChart fx:id="graficaso">
-                                <xAxis>
-                                  <CategoryAxis side="BOTTOM" />
-                                </xAxis>
-                                <yAxis>
-                                  <NumberAxis side="LEFT" />
-                                </yAxis>
-                              </BarChart>
-                           </graphic></MenuItem>
+                        <MenuItem fx:id="VerReporte" mnemonicParsing="false" onAction="#mostrarReporte" text="Ver Reporte" />
                         <MenuItem fx:id="Salir" mnemonicParsing="false" onAction="#cerrarSesion" text="Salir" />
                      </items>
                   </Menu>
@@ -39,6 +29,18 @@
             </MenuBar>
             <HBox prefHeight="710.0" prefWidth="879.0">
                <children>
+                  <Pane fx:id="panelGrafico" prefHeight="710.0" prefWidth="0.0" visible="false">
+                     <children>
+                        <BarChart fx:id="graficaso">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                     </children>
+                  </Pane>
                   <Pane id="mapaCasas" fx:id="panelAdmin" opacity="0.79" prefHeight="650.0" prefWidth="700.0" stylesheets="@vistamapaadmin.css" visible="false" />
                   <VBox fx:id="vResidente" prefHeight="650.0" prefWidth="189.0" />
                </children>
