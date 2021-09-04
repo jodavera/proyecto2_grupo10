@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -57,6 +58,9 @@ public class VistaMapaAdminController implements Initializable{
     private Pane panelAdmin;
     @FXML
     private VBox vResidente;
+    @FXML
+    private BarChart<?, ?> graficaso;
+   
     
     /**
      * Initializes the controller class.
@@ -171,20 +175,47 @@ public class VistaMapaAdminController implements Initializable{
     }
 
     @FXML
-    private void mostrarReporte(ActionEvent event) throws IOException {
-         panelAdmin.setVisible(true);
+    private void mostrarReporte(ActionEvent event)  throws IOException {
+        // panelAdmin.setVisible(true);
          ArrayList<Visitantes> visitas = DatosVisitantes.leerVisitantes();
-         
-        final CategoryAxis xAxis = new CategoryAxis();
-        final NumberAxis yAxis = new NumberAxis();
-        final BarChart<String,Number> grafico = new BarChart<String,Number>(xAxis,yAxis);
-        grafico.setTitle("Cuantas Visitas entran por dia");
+         Collections.sort(visitas); // nos ordena la nuestros Visitantes por su fechad e Ingreso
+
+        CategoryAxis xAxis = new CategoryAxis();
+        NumberAxis yAxis = new NumberAxis();
+        BarChart<String,Number> grafico = new BarChart<String,Number>(xAxis,yAxis);
+
+        graficaso.setTitle("Cuantas Visitas entran por dia");
         XYChart.Series series1= new XYChart.Series();
         series1.setName("Vistas x Dia");
-        for (Visitantes visi: visitas){
-            String nombre=visi.getNombre();
-             series1.getData().add(new XYChart.Data(nombre,visi.getFinicio()));
-        }   
-        grafico.getData().addAll(series1);
+        ArrayList<Visitantes> visitotas=visitantesSinR(visitas);
+
+
+        for (Visitantes visi : visitotas){
+            String fecha = visi.getFinicio().toLocalDate().toString();
+            int cantidad = cantidadDePersonasEnFecha(fecha,visitas);
+            series1.getData().add(new XYChart.Data(fecha,cantidad));
+
+        }
+        graficaso.getData().addAll(series1);
+        //panelAdmin.getChildren().setAll(grafico);
     }
+    public static ArrayList<Visitantes> visitantesSinR(ArrayList<Visitantes> visitantes){
+        ArrayList<Visitantes> Lvisis = new ArrayList<>();
+        
+        for(Visitantes visi :  visitantes){
+            if(!Lvisis.contains(visi)){
+                Lvisis.add(visi);
+            }
+        }
+        return Lvisis;
+    }
+
+    public int cantidadDePersonasEnFecha(String fecha, ArrayList<Visitantes> visitantes){
+        ArrayList<Visitantes> cantidad = new ArrayList<>();
+        for(Visitantes visitante: visitantes)
+            if(visitante.getFinicio().toLocalDate().toString().equalsIgnoreCase(fecha))
+                cantidad.add(visitante);
+        return cantidad.size();
+    }
+
 }
