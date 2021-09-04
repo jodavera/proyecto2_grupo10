@@ -32,7 +32,7 @@ public class DatosUsuarios {
                     if (partes.length == 3) {
                             usu.add(new Administrador(partes[0], partes[1],partes[2]));
                         } else {
-                                usu.add(new Residente(partes[0],partes[1], partes[2], partes[3],partes[4],partes[6]));
+                                usu.add(new Residente(partes[0],partes[1], partes[2], partes[3],partes[4],partes[6],partes[7]));
                                 System.out.println(usu);
                         }
                     }

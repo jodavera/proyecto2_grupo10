@@ -1,7 +1,7 @@
 jodavera,Spiderman2400,Josue
 admin,admin,Karla
 minchan,espol123,Michi
-0000,paloma0,eren,pass,verasuarez2400@hotmail.com,residente,masculino
-2222,us2,ricardo,pass,verasuarez2400@hotmail.com,residente,masculino
-7777,us1,adrian,pass,verasuarez2400@hotmail.com,residente,masculino
-2265,bojrajndxw,Adrian Correa,sretrsvtit,tupreshi@gmail.com,residente,masculino
+0000,paloma0,eren,pass,verasuarez2400@hotmail.com,residente,masculino,0940314099
+2222,us2,ricardo,pass,verasuarez2400@hotmail.com,residente,masculino,0940404099
+7777,us1,adrian,pass,verasuarez2400@hotmail.com,residente,masculino,0940504099
+1973,sedswqopdl,Jose,tigmfgurffdtg,adrian2x2001@gmail.com,residente,masculino,0912312312

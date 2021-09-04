@@ -51,6 +51,8 @@ public class VistaRegistroResidenteController implements Initializable {
     
     
     static String ruta = RutaConstante.RUTAARCHIVOS+"/usuarios.txt";
+    @FXML
+    private TextField cedulaResidente;
     /**
      * Initializes the controller class.
      */
@@ -58,6 +60,7 @@ public class VistaRegistroResidenteController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         generoResidente.getItems().addAll("masculino","femenino");
+        CambiarPinController.limitTextField(cedulaResidente, 10);
     }
 
     public void setCasaSeleccionada(Casas c){
@@ -69,14 +72,18 @@ public class VistaRegistroResidenteController implements Initializable {
         //verificamos que toda la informacion halla sido ingresada correctamente
             Alert a = new Alert(Alert.AlertType.ERROR);
             Alert b = new Alert(Alert.AlertType.INFORMATION);
-                if ((nombreResidente.getText().length()) == 0 || (correoResidente.getText().length() == 0 ) || (generoResidente.getValue()=="")) {
+                if ((nombreResidente.getText().length()) == 0 || (correoResidente.getText().length() == 0 ) || (generoResidente.getValue()==null) || cedulaResidente.getLength()==0) {
                 a.setTitle("Error");
                 a.setContentText("Los datos no del residente no pueden ser vacios");
                 a.showAndWait();}else{
         //verificacion que el nombre no sea un numero
-        int numero;
+        int numero1;
+        int numero2;
         try{
-        numero = Integer.valueOf(nombreResidente.getText());
+        numero2= Integer.valueOf(cedulaResidente.getText());
+        if(cedulaResidente.getLength()==10){
+        try{
+        numero1 = Integer.valueOf(nombreResidente.getText());
         a.setTitle("Error");
         a.setContentText("El nombre del usuario no puede ser un numero");
         a.showAndWait(); 
@@ -119,7 +126,7 @@ public class VistaRegistroResidenteController implements Initializable {
             }
         }
         
-        String linea = pin+","+usuarioUsuario+","+nombreResidente.getText()+","+clave+","+correoResidente.getText()+","+"residente"+","+generoResidente.getValue();
+        String linea = pin+","+usuarioUsuario+","+nombreResidente.getText()+","+clave+","+correoResidente.getText()+","+"residente"+","+generoResidente.getValue()+","+cedulaResidente.getText();
         
         //Creamos el nuevo residente y lo agregamos al a base de datos y archivos
         Residente nuevoResidente=App.bd.agregarResidenteBD(linea);
@@ -153,7 +160,20 @@ public class VistaRegistroResidenteController implements Initializable {
                 a.setContentText("No se pudo enviar el mensaje, verifique la informacion del correo");
                 a.showAndWait();
             }
+        }}else{
+            a.setTitle("Error");
+            a.setContentText("La cedula debe contener 10 numeros");
+            a.showAndWait();
         }
+    
+        } catch(IllegalArgumentException ex2){
+            a.setTitle("Error");
+            a.setContentText("El numero de cedula son numeros!");
+            a.showAndWait(); 
+            
+        }
+        
+
     }
     }
 

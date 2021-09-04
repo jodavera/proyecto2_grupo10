@@ -18,6 +18,7 @@ public class Residente extends Usuario{
     private String nombre ;
     private Casas casa;
     private String genero;
+    private String cedula;
     
     public Residente(){
         super();
@@ -35,12 +36,13 @@ public class Residente extends Usuario{
         this.nombre = nombre;
     }
     
-    public Residente(String pin, String usuario, String nombre, String clave,String correo,String genero) {
+    public Residente(String pin, String usuario, String nombre, String clave,String correo,String genero,String cedula) {
         super(usuario, clave);
         this.pin = pin;
         this.nombre = nombre;
         this.genero=genero;
         this.correo=correo;
+        this.cedula=cedula;
     }
 
 
@@ -62,6 +64,9 @@ public class Residente extends Usuario{
     }
     public String getGenero(){
         return genero;
+    }
+    public String getCedula(){
+        return cedula;
     }
     
     public void setCasa(Casas c){

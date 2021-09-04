@@ -57,7 +57,7 @@ public class BaseDatos {
     public Residente agregarResidenteBD(String linea) throws IOException {
         DatosUsuarios.registrarNuevoUsuario(linea);
         String[] datos = linea.split(",");
-        Usuario nuevoResidente = new Residente(datos[0],datos[1], datos[2], datos[3],datos[4],datos[6]);
+        Usuario nuevoResidente = new Residente(datos[0],datos[1], datos[2], datos[3],datos[4],datos[6],datos[7]);
         usuarios.add(nuevoResidente);
         Residente r = (Residente) nuevoResidente;
         r.setCorreo(datos[4]);
