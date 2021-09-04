@@ -30,9 +30,9 @@ public class DatosVisitantes {
                     System.out.println(linea);
                     String[] partes = linea.split(",");
                     if (partes.length == 6) {
-                        LocalDateTime fechaInicio= LocalDateTime.parse(partes[4]);
+                        LocalDateTime fechaInicio= LocalDateTime.parse(partes[3]);
                         
-                        visi.add(new Visitantes(partes[0], partes[1],partes[2],fechaInicio,Boolean.parseBoolean(partes[5])));
+                        visi.add(new Visitantes(partes[0], partes[1],partes[2],fechaInicio,Boolean.parseBoolean(partes[4])));
                         
                        }
                     }

@@ -39,7 +39,7 @@ public class VistaPrincipalController implements Initializable {
 
     @FXML
     private void simular(MouseEvent event) throws IOException {
-        
+       App.setRoot("simulacion"); 
     }
     
 }
