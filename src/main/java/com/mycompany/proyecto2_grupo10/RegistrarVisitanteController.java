@@ -49,6 +49,10 @@ public class RegistrarVisitanteController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     residente=LoginController.getRs();
+        Alert b  = new Alert(Alert.AlertType.INFORMATION);
+        b.setTitle("Aviso");
+        b.setContentText("El formato de la fecha de visita debe ser AA-MM-DD+T+HH:MM");
+        b.showAndWait();
 // TODO
     }    
     
@@ -58,7 +62,6 @@ public class RegistrarVisitanteController implements Initializable {
         a.setTitle("Error");
         Alert b  = new Alert(Alert.AlertType.INFORMATION);
         b.setTitle("Aviso");
-        b.setContentText("El formato de la fecha de visita debe ser AA-MM-DD+T+HH:MM");
         Visitantes v = new Visitantes();
         if(nombreVisitante.getLength()!=0 && cedulaVisitante.getLength()!=0 && fechaVisita.getLength()!=0 && correoVisitante.getLength()!=0){
         v = new Visitantes(nombreVisitante.getText(),cedulaVisitante.getText(),LocalDateTime.parse(fechaVisita.getText()),correoVisitante.getText(),residente.getUsuario());
