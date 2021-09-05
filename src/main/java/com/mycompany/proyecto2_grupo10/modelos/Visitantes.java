@@ -15,17 +15,32 @@ public class Visitantes implements Comparable <Visitantes> {
     private String nombre;
     private String cedula;
     private String codigoAcceso;
-    private String Correo;
+    private String correo;
     private boolean estado;
     private LocalDateTime Finicio;
     private String  Pin;
+    private String Ussresidente;
+    
+    public Visitantes(){
+        
+    }
 
-    public Visitantes(String nombre, String cedula,String Pin, LocalDateTime Finicio,boolean estado ) {
+    public Visitantes(String nombre, String cedula,String Pin, LocalDateTime Finicio,boolean estado,String correo,String r ) {
         this.nombre = nombre;
         this.cedula = cedula;
         this.estado = estado;
         this.Finicio = Finicio;
         this.Pin = Pin;
+        this.correo=correo;
+        Ussresidente=r;
+    }
+        public Visitantes(String nombre, String cedula, LocalDateTime Finicio, String correo, String uss ) {
+        this.nombre = nombre;
+        this.cedula = cedula;
+        this.estado = false;
+        this.Finicio = Finicio;
+        this.correo = correo;
+        Ussresidente=uss;
     }
 
     public String getNombre() {
@@ -43,6 +58,10 @@ public class Visitantes implements Comparable <Visitantes> {
     public void setCedula(String cedula) {
         this.cedula = cedula;
     }
+    
+    public String getResidente(){
+        return Ussresidente;
+    }
 
     public String getCodigoAcceso() {
         return codigoAcceso;
@@ -53,11 +72,11 @@ public class Visitantes implements Comparable <Visitantes> {
     }
 
     public String getCorreo() {
-        return Correo;
+        return correo;
     }
 
     public void setCorreo(String Correo) {
-        this.Correo = Correo;
+        this.correo = Correo;
     }
 
     public boolean isEstado() {
@@ -86,7 +105,7 @@ public class Visitantes implements Comparable <Visitantes> {
 
     @Override
     public String toString() {
-        return "Visitantes:" + "nombre=" + nombre + ", cedula=" + cedula + ", codigoAcceso=" + codigoAcceso + ", Correo=" + Correo + ", estado=" + estado + ", Finicio=" + Finicio  + ", Pin=" + Pin ;
+        return "Visitantes:" + "nombre=" + nombre + ", cedula=" + cedula + ", codigoAcceso=" + codigoAcceso + ", Correo=" + correo + ", estado=" + estado + ", Finicio=" + Finicio  + ", Pin=" + Pin ;
     }
     
     

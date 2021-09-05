@@ -101,7 +101,10 @@ public class ResidenteController implements Initializable {
     }
 
     @FXML
-    private void registrarVisita(ActionEvent event) {
+    private void registrarVisita(ActionEvent event) throws IOException {
+        FXMLLoader loader =  new FXMLLoader(App.class.getResource("registrarVisitante.fxml"));
+        Parent vistaVISITANTE = loader.load();
+        App.setRoot(vistaVISITANTE);
     }
 
     @FXML

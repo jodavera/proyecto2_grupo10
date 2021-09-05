@@ -5,6 +5,7 @@
  */
 package Correo;
 import com.mycompany.proyecto2_grupo10.modelos.Residente;
+import com.mycompany.proyecto2_grupo10.modelos.Visitantes;
 import java.util.Properties;
 import javax.mail.BodyPart;
 import javax.mail.Message;
@@ -72,6 +73,16 @@ public class Correo {
             System.out.println(mensaje);
             System.out.println(r.getCorreo());
             correo(asunto,mensaje,r.getCorreo());
+            System.out.println("Correo enviado");
+            }
+        public static void enviarCorreo(Visitantes v) throws MessagingException{
+        String asunto;
+        String mensaje;
+        asunto="Usted se ha registrado como un visitante";
+            mensaje="Su pin de acceso es:" +v.getPin()+" Con visita al residente de usaurio: "+v.getResidente();
+            System.out.println(mensaje);
+            System.out.println(v.getCorreo());
+            correo(asunto,mensaje,v.getCorreo());
             System.out.println("Correo enviado");
             }
         
